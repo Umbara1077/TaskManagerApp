@@ -1,0 +1,155 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.dashboard, .login, .home, .task-detail {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+input, textarea, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4e73df;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #2e59d9;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+a {
+  color: #4e73df;
+  text-decoration: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.task-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.task-buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.task-buttons button {
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.task-buttons button:hover {
+  background-color: #365ac4;
+}
+
+.task-buttons a {
+  color: #4e73df;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.task-buttons a:hover {
+  text-decoration: underline;
+}
+
+.page-logo {
+  width: 120px; 
+  height: auto; 
+  display: block;
+  margin: 0 auto 16px; 
+  max-width: 100%;
+}
+
+body.dark-mode {
+  background-color: #18191a;
+  color: #ffffff;
+}
+
+body.dark-mode .dashboard,
+body.dark-mode .login,
+body.dark-mode .home,
+body.dark-mode .task-detail {
+  background-color: #242526;
+  color: #ffffff;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #303134;
+  color: #ffffff;
+  border-color: #3a3b3c;
+}
+
+body.dark-mode .task-item {
+  border-bottom-color: #2c2f33;
+}
+
+.dark-toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.dark-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+body.dark-mode .task-item.completed {
+  background: #383a3b; 
+  color: #b0b3b8; 
+  border: 1px solid #4a4b4c; 
+}
+
+.task-item.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+}
