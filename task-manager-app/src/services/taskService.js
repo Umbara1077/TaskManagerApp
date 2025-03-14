@@ -1,4 +1,3 @@
-// services/taskService.js
 import { db } from './firebase';
 import { collection, query, where, getDocs, addDoc, doc, updateDoc, deleteDoc, Timestamp } from 'firebase/firestore';
 
@@ -16,22 +15,33 @@ export const createTask = async (task) => {
     }
   };
   
-// Fetch Tasks
-export const fetchTasks = async (userId, statusFilter = 'active') => {
+  export const fetchTasks = async (userId, statusFilter = 'active') => {
     try {
-      const q = query(
-        collection(db, 'tasks'),
-        where('createdBy', '==', userId),
-        where('status', 'in', statusFilter === 'active' ? ['Pending', 'In Progress'] : ['Completed'])
-      );
-  
-      const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const q = query(
+            collection(db, 'tasks'),
+            where('createdBy', '==', userId),
+            where('status', 'in', statusFilter === 'active' ? ['Pending', 'In Progress'] : ['Completed'])
+        );
+
+        const querySnapshot = await getDocs(q);
+
+        // Convert Firestore Timestamps to JavaScript Dates
+        let tasks = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            dueDate: doc.data().dueDate.toDate()
+        }));
+
+        // Sort tasks by due date (earliest first)
+        tasks.sort((a, b) => a.dueDate - b.dueDate);
+
+        return tasks;
     } catch (error) {
-      console.error('Error fetching tasks:', error);
-      return [];
+        console.error('Error fetching tasks:', error);
+        return [];
     }
-  };
+};
+
 
 export const fetchTaskById = async (id) => {
   const taskSnap = await getDocs(doc(db, 'tasks', id));
