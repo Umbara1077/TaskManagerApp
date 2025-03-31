@@ -166,13 +166,29 @@ body.dark-mode .task-item.completed {
   background-color: white;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px 5px rgba(78, 115, 223, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px 5px rgba(78, 115, 223, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
   text-align: center;
   width: 320px;
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
+  animation: float 4s ease-in-out infinite;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
+  }
+  50% {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.8));
+  }
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
+  }
+}
 .home-box::after {
   content: "";
   position: absolute;
